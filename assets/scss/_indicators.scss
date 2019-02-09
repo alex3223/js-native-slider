@@ -1,0 +1,31 @@
+.indicators {
+  position: absolute;
+  display: flex;
+  width: 300px;
+  z-index: 2;
+  bottom: 0;
+  left: calc(50% - 150px);
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+
+  button {
+    width: 24px;
+    height: 24px;
+    margin: 5px;
+    color: #222;
+    background-color: #fff;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 15px #000;
+  }
+}
+
+.indicator-item:hover{
+    color: #fff;
+    background-color: #222;
+    box-shadow: 0 0 15px #fff;
+}

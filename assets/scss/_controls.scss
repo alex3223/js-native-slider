@@ -1,0 +1,49 @@
+
+.controls {
+    
+
+    &__item {
+        position: absolute;
+        z-index: 2;
+
+        display: flex;
+
+        width: 10%;
+        min-width: 50px;
+        height: 100%;
+        margin: 0;
+
+        cursor: pointer;
+
+        color: #ffffff;
+
+        font-size: 40px;
+
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__next {
+        top: 0;
+        right: 0;
+
+        background: linear-gradient(to left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+
+        &:hover,
+        &:focus {
+            background: linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+        }
+    }
+
+    &__prev {
+        top: 0;
+        left: 0;
+
+        background: linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+
+        &:hover,
+        &:focus {
+            background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+        }
+    }
+}
