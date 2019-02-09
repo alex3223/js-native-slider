@@ -1,5 +1,6 @@
 let slidesItem = document.querySelectorAll('.slide-item');
 let indContainer = document.querySelector('.indicators');
+let indItems = document.querySelectorAll('.indicator-item')
 let btnPausePlay = document.querySelector('#pause-play');
 let btnPrev = document.querySelector('.controls__prev');
 let btnNext = document.querySelector('.controls__next');
@@ -16,8 +17,10 @@ const RIGHT_ARROW = 'ArrowRight';
 
 let goToSlide = (n) => {
   slidesItem[currentSlide].classList.toggle('active');
+  indItems[currentSlide].classList.toggle('active');
   currentSlide = (n + slidesItem.length) % slidesItem.length;
   slidesItem[currentSlide].classList.toggle('active');
+  indItems[currentSlide].classList.toggle('active');
 }
 
 let goToNextSlide = () => {

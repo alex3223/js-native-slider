@@ -104,7 +104,13 @@ body {
     -webkit-box-shadow: 0 0 15px #000;
     box-shadow: 0 0 15px #000; }
 
-.indicator-item:hover {
+.indicator-item:hover, .indicator-item:active {
+  color: #fff;
+  background-color: #222;
+  -webkit-box-shadow: 0 0 15px #fff;
+  box-shadow: 0 0 15px #fff; }
+
+.indicator-item.active {
   color: #fff;
   background-color: #222;
   -webkit-box-shadow: 0 0 15px #fff;

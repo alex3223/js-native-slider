@@ -24,8 +24,19 @@
   }
 }
 
-.indicator-item:hover{
+.indicator-item {
+  
+  &:hover,
+  &:active
+  {
     color: #fff;
     background-color: #222;
     box-shadow: 0 0 15px #fff;
+  }
+
+  &.active {
+    color: #fff;
+    background-color: #222;
+    box-shadow: 0 0 15px #fff;
+  }
 }
