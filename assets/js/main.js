@@ -1,9 +1,9 @@
-let slidesItem = document.querySelectorAll('.slide-item');
-let indContainer = document.querySelector('.indicators');
-let indItems = document.querySelectorAll('.indicator-item')
-let btnPausePlay = document.querySelector('#pause-play');
-let btnPrev = document.querySelector('.controls__prev');
-let btnNext = document.querySelector('.controls__next');
+let $slidesItem = $('.slide-item');
+let $indContainer = $('.indicators');
+let $indItems = $('.indicator-item')
+let $btnPausePlay = $('#pause-play');
+let $btnPrev = $('.controls__prev');
+let $btnNext = $('.controls__next');
 let currentSlide = 0;
 let playStatus = true;
 let timerId = null;
@@ -16,11 +16,11 @@ const LEFT_ARROW = 'ArrowLeft';
 const RIGHT_ARROW = 'ArrowRight';
 
 let goToSlide = (n) => {
-  slidesItem[currentSlide].classList.toggle('active');
-  indItems[currentSlide].classList.toggle('active');
-  currentSlide = (n + slidesItem.length) % slidesItem.length;
-  slidesItem[currentSlide].classList.toggle('active');
-  indItems[currentSlide].classList.toggle('active');
+  $($slidesItem[currentSlide]).toggleClass('active');
+  $($indItems[currentSlide]).toggleClass('active');
+  currentSlide = (n + $slidesItem.length) % $slidesItem.length;
+  $($slidesItem[currentSlide]).toggleClass('active');
+  $($indItems[currentSlide]).toggleClass('active');
 }
 
 let goToNextSlide = () => {
@@ -31,18 +31,18 @@ let goToPrevSlide = () => {
   goToSlide(currentSlide - 1);
 }
 
-let startSlider = () => timerId = setInterval(goToNextSlide,timerInterval);
+let slideInterval = setInterval(goToNextSlide,timerInterval);
 
 let pauseSlideShow = () => {
-  btnPausePlay.innerHTML = FA_PLAY;
+  $btnPausePlay.innerHTML = FA_PLAY;
   playStatus = !playStatus;
-  clearInterval(timerId);
+  clearInterval(slideInterval);
 }
 
 let playSlideShow = () => {
-  btnPausePlay.innerHTML = FA_PAUSE;
+  $btnPausePlay.innerHTML = FA_PAUSE;
   playStatus = !playStatus;
-  startSlider();
+  slideInterval = setInterval(nextSlide, carouselInterval);
 }
 
 let pausePlaySlideShow = () => {
@@ -59,22 +59,17 @@ let clickNextBtn = () => {
   goToNextSlide();
 }
 
-btnPausePlay.addEventListener('click', pausePlaySlideShow);
-btnPrev.addEventListener('click', clickPrevBtn);
-btnNext.addEventListener('click', clickNextBtn);
+$btnPausePlay.on('click', pausePlaySlideShow);
+$btnPrev.on('click', clickPrevBtn);
+$btnNext.on('click', clickNextBtn);
 
-startSlider();
 
 let clickIndicatorItem = (event) => {
-  let target = event.target;
-
-  if (target.classList.contains('indicator-item')) {
      pauseSlideShow();
      goToSlide(+target.getAttribute('data-slide-to'));
   }
-}
 
-indContainer.addEventListener('click', clickIndicatorItem);
+$indContainer.on('click', clickIndicatorItem);
 
 
 let keyControlsBtn = (event) => {
@@ -83,4 +78,4 @@ let keyControlsBtn = (event) => {
   if (event.key === RIGHT_ARROW) clickNextBtn();
 }
 
-document.addEventListener('keydown', keyControlsBtn);
+$(document).on('keydown', keyControlsBtn);
