@@ -34,20 +34,19 @@ let goToPrevSlide = () => {
 let slideInterval = setInterval(goToNextSlide,timerInterval);
 
 let pauseSlideShow = () => {
-  $btnPausePlay.innerHTML = FA_PLAY;
+  $btnPausePlay.html(FA_PLAY);
   playStatus = !playStatus;
   clearInterval(slideInterval);
 }
 
 let playSlideShow = () => {
-  $btnPausePlay.innerHTML = FA_PAUSE;
+  $btnPausePlay.html(FA_PAUSE);
   playStatus = !playStatus;
-  slideInterval = setInterval(nextSlide, carouselInterval);
+  slideInterval = setInterval(goToNextSlide, timerInterval);
 }
 
-let pausePlaySlideShow = () => {
-  playStatus ? pauseSlideShow() : playSlideShow(); 
-}
+let pausePlaySlideShow = () =>  playStatus ? pauseSlideShow() : playSlideShow(); 
+
 
 let clickPrevBtn = () => {
   pauseSlideShow();
@@ -66,7 +65,7 @@ $btnNext.on('click', clickNextBtn);
 
 let clickIndicatorItem = (event) => {
      pauseSlideShow();
-     goToSlide(+target.getAttribute('data-slide-to'));
+     goToSlide(+event.target.getAttribute('data-slide-to'));
   }
 
 $indContainer.on('click', clickIndicatorItem);
