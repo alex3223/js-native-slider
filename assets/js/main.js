@@ -1,6 +1,6 @@
 let $slidesItem = $('.slide-item');
 let $indContainer = $('.indicators');
-let $indItems = $('.indicator-item')
+let $indItems = $('.indicator-item');
 let $btnPausePlay = $('#pause-play');
 let $btnPrev = $('.controls__prev');
 let $btnNext = $('.controls__next');
@@ -23,20 +23,20 @@ let goToSlide = (n) => {
   $($indItems[currentSlide]).toggleClass('active');
 }
 
-let goToNextSlide = () => {
-  goToSlide(currentSlide + 1);
-}
+let goToNextSlide = () => goToSlide(currentSlide + 1);
 
-let goToPrevSlide = () => {
-  goToSlide(currentSlide - 1);
-}
 
-let slideInterval = setInterval(goToNextSlide,timerInterval);
+let goToPrevSlide = () => goToSlide(currentSlide - 1);
+
+
+let slideInterval = setInterval(goToNextSlide, timerInterval);
 
 let pauseSlideShow = () => {
-  $btnPausePlay.html(FA_PLAY);
-  playStatus = !playStatus;
-  clearInterval(slideInterval);
+  if (playStatus) {
+    $btnPausePlay.html(FA_PLAY);
+    playStatus = !playStatus;
+    clearInterval(slideInterval);
+  }
 }
 
 let playSlideShow = () => {
@@ -45,7 +45,7 @@ let playSlideShow = () => {
   slideInterval = setInterval(goToNextSlide, timerInterval);
 }
 
-let pausePlaySlideShow = () =>  playStatus ? pauseSlideShow() : playSlideShow(); 
+let pausePlaySlideShow = () => playStatus ? pauseSlideShow() : playSlideShow();
 
 
 let clickPrevBtn = () => {
@@ -64,11 +64,11 @@ $btnNext.on('click', clickNextBtn);
 
 
 let clickIndicatorItem = (event) => {
-     pauseSlideShow();
-     goToSlide(+event.target.getAttribute('data-slide-to'));
-  }
+  pauseSlideShow();
+  goToSlide(+event.target.getAttribute('data-slide-to'));
+}
 
-$indContainer.on('click', clickIndicatorItem);
+$indContainer.on('click', '.indicator-item', clickIndicatorItem);
 
 
 let keyControlsBtn = (event) => {
@@ -78,3 +78,6 @@ let keyControlsBtn = (event) => {
 }
 
 $(document).on('keydown', keyControlsBtn);
+
+
+

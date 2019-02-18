@@ -87,10 +87,11 @@ body {
   -ms-flex-align: center;
   align-items: center;
   font-size: 12px; }
-  .indicators button {
+  .indicators span {
     width: 24px;
     height: 24px;
     margin: 5px;
+    font-size: 15px;
     color: #222;
     background-color: #fff;
     text-align: center;
